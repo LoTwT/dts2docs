@@ -1,1 +1,5 @@
 # ohmydts
+
+## License
+
+[MIT](./LICENSE)
