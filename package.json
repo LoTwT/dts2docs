@@ -32,7 +32,8 @@
     "prepublishOnly": "pnpm build",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
