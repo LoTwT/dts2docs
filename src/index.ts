@@ -1,1 +1,1 @@
-console.log("ts-starter")
+export { parseDts, parseDtsSync, parseDtsFile, parseDtsFileSync } from "./parse"
