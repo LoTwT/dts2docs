@@ -1,5 +1,12 @@
-describe("ts-starter", () => {
-  it("should be 1", () => {
-    expect(1).toBe(1)
+import { parseFileSync } from "@swc/core"
+import { resolve } from "path"
+
+const simpleConfigPath = resolve(__dirname, "./source/simple.ts")
+const complexConfigPath = resolve(__dirname, "./source/complex.ts")
+
+describe("parse", () => {
+  it("first", () => {
+    let ret = parseFileSync(simpleConfigPath, { syntax: "typescript" })
+    expect(ret).toMatchInlineSnapshot()
   })
 })
