@@ -1,12 +1,7 @@
-import { parseFileSync } from "@swc/core"
-import { resolve } from "path"
+import { one } from "@/index"
 
-const simpleConfigPath = resolve(__dirname, "./source/simple.ts")
-const complexConfigPath = resolve(__dirname, "./source/complex.ts")
-
-describe("parse", () => {
-  it("first", () => {
-    let ret = parseFileSync(simpleConfigPath, { syntax: "typescript" })
-    expect(ret).toMatchInlineSnapshot()
+describe("ts-starter", () => {
+  it("happy path", () => {
+    expect(one).toBe(1)
   })
 })

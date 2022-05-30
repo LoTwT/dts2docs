@@ -1,1 +1,1 @@
-export { parseDts, parseDtsSync, parseDtsFile, parseDtsFileSync } from "./parse"
+export const one = 1
