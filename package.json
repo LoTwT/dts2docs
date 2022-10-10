@@ -1,14 +1,14 @@
 {
-  "name": "ohmyts",
+  "name": "dts2docs",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.1.7",
-  "description": "",
-  "main": "./dist/index.cjs",
+  "packageManager": "pnpm@7.13.3",
+  "description": "dts2docs",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     }
@@ -26,42 +26,47 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "stub": "unbuild --stub",
-    "build": "unbuild",
+    "watch": "tsup --watch",
+    "build": "tsup",
+    "lint": "prettier -c .",
     "prettier": "prettier --write .",
-    "prepublishOnly": "pnpm build",
-    "release": "bumpp --commit --push --tag && npm publish",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "prepare": "husky install"
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp && npm publish",
+    "prepare": "simple-git-hooks",
+    "up": "taze latest -I"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LoTwT/ohmyts.git"
+    "url": "git+https://github.com/LoTwT/dts2docs.git"
   },
   "keywords": [],
   "author": "LoTwT <709937065@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LoTwT/ohmyts/issues"
+    "url": "https://github.com/LoTwT/dts2docs/issues"
   },
-  "homepage": "https://github.com/LoTwT/ohmyts#readme",
+  "homepage": "https://github.com/LoTwT/dts2docs#readme",
   "devDependencies": {
-    "@types/node": "^17.0.36",
-    "bumpp": "^7.1.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.2",
-    "pnpm": "^7.1.7",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.7.2",
-    "unbuild": "^0.7.4",
-    "unplugin-auto-import": "^0.8.6",
-    "vitest": "^0.13.0"
+    "@types/node": "^18.8.3",
+    "bumpp": "^8.2.1",
+    "lint-staged": "^13.0.3",
+    "pnpm": "^7.13.3",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0",
+    "taze": "^0.8.2",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4",
+    "unplugin-auto-import": "^0.11.2",
+    "vitest": "^0.24.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,json,md}": [
-      "prettier --write"
+    "*": [
+      "prettier --write --ignore-unknown"
     ]
   }
 }
